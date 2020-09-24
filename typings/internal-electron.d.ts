@@ -244,6 +244,13 @@ declare namespace ElectronInternal {
     appIcon: Electron.NativeImage | null;
   }
 
+  interface Environment {
+    getVar(name: string) : string | null;
+    hasVar(name: string): boolean;
+    setVar(name: string, value: string): boolean;
+    unSetVar(name: string): boolean;
+  }
+
   interface KeyWeakMap<K, V> {
     set(key: K, value: V): void;
     get(key: K): V | undefined;

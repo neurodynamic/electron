@@ -461,8 +461,11 @@ const addReturnValueToEvent = (event: any) => {
   });
 };
 
+const { hasSwitch } = process._linkedBinding('electron_common_command_line');
+const { hasVar } = process._linkedBinding('electron_common_environment');
+
 const loggingEnabled = () => {
-  return process.env.ELECTRON_ENABLE_LOGGING || app.commandLine.hasSwitch('enable-logging');
+  return hasVar('ELECTRON_ENABLE_LOGGING') || hasSwitch('enable-logging');
 };
 
 // Add JavaScript wrappers for WebContents class.
